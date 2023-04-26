@@ -3,9 +3,11 @@ import { BsListTask, BsCheckAll } from "react-icons/bs";
 import { useContext } from "react";
 import TasksStore from "../context/store";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Layout = ({ children }) => {
   const { tasks, upcoming, today } = useContext(TasksStore);
+  const { pathname } = useLocation();
 
   return (
     <div className="drawer drawer-mobile">
@@ -30,7 +32,10 @@ const Layout = ({ children }) => {
           />
           <li className="text-sm font-bold uppercase my-2">tasks</li>
           <li>
-            <Link to="/">
+            <Link
+              to="/"
+              className={pathname === "/" ? "bg-primary text-white" : ""}
+            >
               <BsCheckAll /> All
               <span className="px-2 text-sm rounded-lg bg-success text-white font-semibold">
                 {tasks?.length}
@@ -38,7 +43,10 @@ const Layout = ({ children }) => {
             </Link>
           </li>
           <li>
-            <Link to="/today">
+            <Link
+              to="/today"
+              className={pathname === "/today" ? "bg-primary text-white" : ""}
+            >
               <BsListTask /> Today
               <span className="px-2 text-sm rounded-lg bg-red-500 text-white font-semibold">
                 {today?.length}
@@ -46,7 +54,12 @@ const Layout = ({ children }) => {
             </Link>
           </li>
           <li>
-            <Link to="/upcomming">
+            <Link
+              to="/upcomming"
+              className={
+                pathname === "/upcomming" ? "bg-primary text-white" : ""
+              }
+            >
               <AiOutlineDoubleRight /> Upcoming
               <span className="px-2 text-sm rounded-lg bg-cyan-500 text-white font-semibold">
                 {upcoming?.length}
@@ -55,14 +68,22 @@ const Layout = ({ children }) => {
           </li>
           <li className="text-sm font-bold uppercase my-2">lists</li>
           <li>
-            <a>
+            <Link
+              to="/personal"
+              className={
+                pathname === "/personal" ? "bg-primary text-white" : ""
+              }
+            >
               <span className="w-3 h-3 bg-red-500 rounded"></span> Personal
-            </a>
+            </Link>
           </li>
           <li>
-            <a>
+            <Link
+              to="/project"
+              className={pathname === "/project" ? "bg-primary text-white" : ""}
+            >
               <span className="w-3 h-3 bg-cyan-500 rounded"></span> Project
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

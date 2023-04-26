@@ -5,7 +5,7 @@ export const Task = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate vero totam ex debitis nobis porro id hic veniam, unde odit",
     list: "personal",
-    date: "2023-04-25",
+    date: "2023-12-25",
     isDone: false,
   },
   {
@@ -32,7 +32,7 @@ export const Task = [
     description:
       "Consectetur adipisicing elit. Cupiditate vero totam ex debitis nobis porro id hic veniam, unde odit",
     list: "project",
-    date: "2023-04-26",
+    date: "2023-12-26",
     isDone: false,
   },
 ];

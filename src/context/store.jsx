@@ -7,6 +7,8 @@ export const ContextProvider = ({ children }) => {
   const [tasks, setTasks] = useState(Task);
   const [upcoming, setUpcoming] = useState([]);
   const [today, setToday] = useState([]);
+  const [personal, setPersonal] = useState([]);
+  const [project, setProject] = useState([]);
   const [singleTask, setSingleTasks] = useState({});
 
   // add new item
@@ -60,6 +62,20 @@ export const ContextProvider = ({ children }) => {
     setToday(newTasks);
   };
 
+  // personal filter
+  const personalFilter = () => {
+    if (!tasks) return {};
+    const newTasks = tasks.filter((val) => val.list === "personal");
+    setPersonal(newTasks);
+  };
+
+  // Project filter
+  const projectFilter = () => {
+    if (!tasks) return {};
+    const newTasks = tasks.filter((val) => val.list === "project");
+    setProject(newTasks);
+  };
+
   // Update Tasks
   const upDateById = (id, updateData) => {
     if (!tasks) return {};
@@ -73,13 +89,23 @@ export const ContextProvider = ({ children }) => {
 
     // today Filter
     todayFilter();
+
+    // personal filter
+    personalFilter();
+
+    // project Filter
+    projectFilter();
   }, [tasks]);
 
   const contextValues = {
     tasks,
+    upcoming,
+    today,
+    personal,
+    project,
+    singleTask,
     addTasks,
     setTasks,
-    singleTask,
     setSingleTasks,
     toggleCheckd,
     upDateById,
@@ -87,8 +113,6 @@ export const ContextProvider = ({ children }) => {
     deleteByid,
     upcommingFilter,
     todayFilter,
-    upcoming,
-    today,
   };
 
   return (

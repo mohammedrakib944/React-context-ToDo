@@ -61,7 +61,6 @@ const TasksView = () => {
   return (
     <>
       <Toaster />
-
       <div className="lg:border-l sticky top-8 px-3 lg:px-10">
         <p className="flex items-center gap-2 text-xl font-bold uppercase mb-6 mt-2">
           Task <TbListDetails />
@@ -94,7 +93,7 @@ const TasksView = () => {
         <div className="max-w-[400px] flex justify-between items-center gap-6 py-2 px-1">
           <p className="font-semibold text-gray-500">List</p>
           <select
-            defaultValue={list}
+            value={list}
             onChange={(e) => setList(e.target.value)}
             className="select w-full max-w-[150px]"
           >
@@ -109,7 +108,7 @@ const TasksView = () => {
         <br />
         <button
           onClick={handleUpdate}
-          className="btn bg-cyan-500 border-none gap-2 rounded-xl px-5"
+          className="btn bg-primary gap-2 rounded-xl px-5"
         >
           save changes
           <BiEdit />
